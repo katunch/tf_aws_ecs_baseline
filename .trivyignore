@@ -1,0 +1,4 @@
+AVD-AWS-0104 (CRITICAL): Security group rule allows unrestricted egress to any IP address.
+AVD-AWS-0079 (HIGH): Cluster does not specify a customer managed key for storage encryption.
+AVD-AWS-0107 (HIGH): Security group rule allows unrestricted ingress from any IP address.
+AVD-AWS-0053 (HIGH): Load balancer is exposed publicly.

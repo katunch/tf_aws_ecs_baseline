@@ -1,0 +1,12 @@
+#!/bin/bash
+sudo dnf install -y jq mariadb105
+%{ for user in users ~}
+sudo useradd -m -s /bin/false ${user.username}
+sudo mkdir -p /home/${user.username}/.ssh
+sudo touch /home/${user.username}/.ssh/authorized_keys
+sudo chmod 700 /home/${user.username}/.ssh
+sudo chmod 600 /home/${user.username}/.ssh/authorized_keys
+sudo chown -R ${user.username}:${user.username} /home/${user.username}/.ssh
+sudo echo "${user.public_key}" >> /home/${user.username}/.ssh/authorized_keys
+%{ endfor ~}
+${additional_user_data}
