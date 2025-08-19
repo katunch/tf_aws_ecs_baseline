@@ -50,25 +50,3 @@ output "vpc_internet_access_security_group_id" {
   value       = module.internet_access_security_group.id
   description = "The ID of the internet access security group in the VPC"
 }
-
-# output "rds_admin_user" {
-#   value       = module.rds.rds_admin_username
-#   description = "The admin user for the RDS instance"
-# }
-# output "rds_admin_password" {
-#   value       = module.rds.rds_admin_password
-#   description = "The admin password for the RDS instance"
-#   sensitive   = true
-# }
-# output "rds_cluster_endpoint" {
-#   value       = module.rds.rds_endpoint
-#   description = "The endpoint of the RDS cluster"
-# }
-# output "rds_db_name" {
-#   value       = module.rds.db_name
-#   description = "The name of the database in the RDS cluster"
-# }
-# output "rds_security_group_id" {
-#   value       = module.rds.rds_security_group_id
-#   description = "The security group ID for the RDS instance"
-# }
