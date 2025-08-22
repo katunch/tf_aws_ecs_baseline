@@ -50,3 +50,13 @@ output "vpc_internet_access_security_group_id" {
   value       = module.internet_access_security_group.id
   description = "The ID of the internet access security group in the VPC"
 }
+
+output "regional_certificate_arn" {
+  value       = module.regional_certificate.arn
+  description = "The ARN of the regional certificate"
+}
+
+output "us_east_1_certificate_arn" {
+  value       = module.us-east-1_certificate.arn
+  description = "The ARN of the us-east-1 certificate"
+}
