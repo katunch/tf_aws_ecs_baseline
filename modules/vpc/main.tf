@@ -68,7 +68,7 @@ resource "aws_eip" "nat" {}
 
 module "fck-nat" {
   source              = "RaJiska/fck-nat/aws"
-  version             = "1.3.0"
+  version             = "1.4.0"
   name                = "fck-nat"
   vpc_id              = data.aws_vpc.selected.id
   subnet_id           = data.aws_subnets.public.ids[0]
