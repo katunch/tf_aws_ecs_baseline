@@ -23,3 +23,12 @@ variable "ecs_clusters" {
   type = map(object({}))
   description = "Map of ECS cluster names to their configurations"
 }
+
+variable "additional_bastion_ssh_users" {
+  description = "List of additional SSH users for the bastion host"
+  type        = list(object({
+    username   = string
+    public_key = string
+  }))
+  default     = []
+}
