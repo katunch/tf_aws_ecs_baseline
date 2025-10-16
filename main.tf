@@ -40,13 +40,14 @@ module "vpc_s3_gateway" {
 }
 
 module "bastion" {
-  source          = "./modules/bastion_host"
-  name            = "bastion-host"
-  vpc_id          = data.aws_vpc.default.id
-  public_key      = var.bastion_default_public_key
-  route53_zone_id = var.route53_zone_id
-  fqdn            = "bastion.${var.fqdn}"
-  subnet_id       = module.vpc.public_subnet_ids[0]
+  source               = "./modules/bastion_host"
+  name                 = "bastion-host"
+  vpc_id               = data.aws_vpc.default.id
+  public_key           = var.bastion_default_public_key
+  additional_ssh_users = var.additional_bastion_ssh_users
+  route53_zone_id      = var.route53_zone_id
+  fqdn                 = "bastion.${var.fqdn}"
+  subnet_id            = module.vpc.public_subnet_ids[0]
 }
 
 module "regional_certificate" {
@@ -101,7 +102,7 @@ module "internet_access_security_group" {
 ## ECS Cluster
 ## ---------------------
 module "ecs_clusters" {
-  for_each = var.ecs_clusters
+  for_each     = var.ecs_clusters
   source       = "./modules/ecs"
   cluster_name = each.key
 }
