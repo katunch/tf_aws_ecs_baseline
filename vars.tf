@@ -17,6 +17,7 @@ variable "fqdn" {
 variable "bastion_default_public_key" {
   description = "The default public key for the bastion host"
   type        = string
+  default     = ""
 }
 
 variable "ecs_clusters" {
