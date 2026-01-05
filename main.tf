@@ -39,7 +39,11 @@ module "vpc_s3_gateway" {
   route_table_ids = module.vpc.private_route_table_ids
 }
 
+locals {
+  bastion_enabled = length(var.bastion_default_public_key) > 0 && length(var.additional_bastion_ssh_users) > 0
+}
 module "bastion" {
+  count                = local.bastion_enabled ? 1 : 0
   source               = "./modules/bastion_host"
   name                 = "bastion-host"
   vpc_id               = data.aws_vpc.default.id
